@@ -68,9 +68,9 @@
 		63E28ACD1B99C32400FBF6E0 /* Clima */ = {
 			isa = PBXGroup;
 			children = (
-				7216CB4922C9B14400432CF2 /* Supporting Files */,
 				7216CB4822C9B11700432CF2 /* Controller */,
 				7216CB4722C9B11000432CF2 /* Model */,
+				7216CB4922C9B14400432CF2 /* Supporting Files */,
 				7216CB4522C9B0FD00432CF2 /* View */,
 			);
 			path = Clima;
@@ -118,7 +118,6 @@
 				179432A7D8E2CF515E235F1A /* Pods-Clima.debug.xcconfig */,
 				D98B7179E7A485618F559007 /* Pods-Clima.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
