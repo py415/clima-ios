@@ -79,6 +79,7 @@
 		7216CB4522C9B0FD00432CF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				63E28AFE1B99C3B300FBF6E0 /* LaunchScreen.xib */,
 				63E28AF41B99C36100FBF6E0 /* Main.storyboard */,
 				63E28AF31B99C36100FBF6E0 /* Images.xcassets */,
 			);
@@ -107,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				63E28ACF1B99C32400FBF6E0 /* Info.plist */,
-				63E28AFE1B99C3B300FBF6E0 /* LaunchScreen.xib */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
