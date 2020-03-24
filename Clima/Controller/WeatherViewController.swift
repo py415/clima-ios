@@ -13,25 +13,22 @@ import SwiftyJSON
 
 class WeatherViewController: UIViewController, CLLocationManagerDelegate, ChangeCityDelegate {
     
-    //Constants
-    let WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather"
-    let APP_ID = "***REMOVED***"
-    /***Get your own App ID at https://openweathermap.org/appid ****/
-    
-    //TODO: Declare instance variables here
-    let locationManager = CLLocationManager()
-    let weatherDataModel = WeatherDataModel()
-    
-    //Pre-linked IBOutlets
+    // Outlets
     @IBOutlet weak var weatherIcon: UIImageView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    
+    // Properties
+    let weatherURL = "http://api.openweathermap.org/data/2.5/weather"
+    let appID = "***REMOVED***"
+    /***Get your own App ID at https://openweathermap.org/appid ****/
+    let locationManager = CLLocationManager()
+    let weatherDataModel = WeatherDataModel()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        //TODO:Set up the location manager here.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -39,30 +36,29 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
-    //MARK: - Networking
+    // MARK: - Networking
     /***************************************************************/
     
     //Write the getWeatherData method here:
-    func getWeatherData(url: String, parameters: [String : String]) {
+    func getWeatherData(url: String, parameters: [String: String]) {
         
-        Alamofire.request(url, method: .get, parameters: parameters).responseJSON {
-            response in
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { response in
             if response.result.isSuccess {
                 print("Success! Got the weather data")
                 
-                let weatherJSON : JSON = JSON(response.result.value!)
+                let weatherJSON: JSON = JSON(response.result.value!)
                 
                 self.updateWeatherData(json: weatherJSON)
                 
             } else {
-                print("Error \(response.result.error)")
+                print("Error \(String(describing: response.result.error))")
                 self.cityLabel.text = "Connection Issues"
             }
         }
         
     }
     
-    //MARK: - JSON Parsing
+    // MARK: - JSON Parsing
     /***************************************************************/
     
     //Write the updateWeatherData method here:
@@ -81,7 +77,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
-    //MARK: - UI Updates
+    // MARK: - UI Updates
     /***************************************************************/
     
     //Write the updateUIWithWeatherData method here:
@@ -93,7 +89,7 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
-    //MARK: - Location Manager Delegate Methods
+    // MARK: - Location Manager Delegate Methods
     /***************************************************************/
     
     //Write the didUpdateLocations method here:
@@ -110,9 +106,9 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
             let latitude = String(location.coordinate.latitude)
             let longitude = String(location.coordinate.latitude)
             
-            let params: [String : String] = ["lat" : latitude, "lon" : longitude, "appid" : APP_ID]
+            let params: [String: String] = ["lat": latitude, "lon": longitude, "appid": appID]
             
-            getWeatherData(url: WEATHER_URL, parameters: params)
+            getWeatherData(url: weatherURL, parameters: params)
         }
         
     }
@@ -125,13 +121,13 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
         
     }
     
-    //MARK: - Change City Delegate methods
+    // MARK: - Change City Delegate methods
     /***************************************************************/
     func userEnteredANewCityName(city: String) {
         
-        let params: [String : String] = ["q" : city, "appid" : APP_ID]
+        let params: [String: String] = ["q": city, "appid": appID]
         
-        getWeatherData(url: WEATHER_URL, parameters: params)
+        getWeatherData(url: weatherURL, parameters: params)
         
     }
     
@@ -149,5 +145,3 @@ class WeatherViewController: UIViewController, CLLocationManagerDelegate, Change
     }
     
 }
-
-
