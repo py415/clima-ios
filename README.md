@@ -4,7 +4,7 @@
 1. [Overview](#Overview)
 2. [Product Spec](#Product-Spec)
 3. [App Walkthrough](#App-Walkthrough)
-4. [Open-Source libraries used](#Open-Source-libraries-used)
+4. [APIs used](#APIs-used)
 5. [Credits](#Credits)
 
 ## Overview
@@ -22,7 +22,7 @@ Clima is a location-aware weather app. It will find out where you are in the wor
 
 Here's a GIF of how the app works:
 
-<img src="ADD_GIF_LINK" width=250><br>
+<img src="https://i.imgur.com/pXxqKbq.gif" width=250><br>
 
 ## APIs used
 
