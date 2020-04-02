@@ -16,7 +16,7 @@ Clima is a location-aware weather app. It will find out where you are in the wor
 ### User Stories
 
 - [ ] User shall be able to check the live-weather data using the phones GPS.
-- [ ] User shall be able to query live-weather data based on the location that they search.
+- [X] User shall be able to query live-weather data based on the location that they entered.
 
 ## App Walkthrough
 
