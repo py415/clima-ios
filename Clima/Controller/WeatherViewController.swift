@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class WeatherViewController: UIViewController {
     
@@ -18,15 +19,28 @@ class WeatherViewController: UIViewController {
     
     // Properties
     var weatherManager = WeatherManager()
+    var locationManager = CLLocationManager()
     
     override func viewDidLoad() {
     
         super.viewDidLoad()
         
+        // Ask user for accessing location permission
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
         // Set WeatherViewController as delegate
         weatherManager.delegate = self
         searchTextField.delegate = self
     
+    }
+    
+    @IBAction func locationPressed(_ sender: UIButton) {
+        
+        // Fetch GPS location
+        locationManager.requestLocation()
+        
     }
     
 }
@@ -88,6 +102,31 @@ extension WeatherViewController: WeatherManagerDelegate {
     
     func didFailWithError(_ error: Error) {
         
+        print(error)
+        
+    }
+    
+}
+
+// MARK: - CLLocationManagerDelegate Section
+
+extension WeatherViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+        let location = locations.last
+        locationManager.stopUpdatingLocation()
+        let lat = location?.coordinate.latitude
+        let lon = location?.coordinate.longitude
+        
+        if lat != nil && lon != nil {
+            weatherManager.fetchWeather(latitude: lat!, longitude: lon!)
+        }
+        
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+
         print(error)
         
     }
