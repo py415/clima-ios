@@ -10,6 +10,7 @@ import Foundation
 
 struct WeatherData: Codable {
     
+    // MARK: - Properties
     let name: String
     let main: Main
     let weather: [Weather]
@@ -18,12 +19,14 @@ struct WeatherData: Codable {
 
 struct Main: Codable {
     
+    // MARK: - Properties
     let temp: Double
     
 }
 
 struct Weather: Codable {
     
+    // MARK: - Properties
     let description: String
     let id: Int
     

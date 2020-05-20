@@ -11,13 +11,13 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
-    // Outlets
+    // MARK: - Outlets
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
-    // Properties
+    // MARK: - Proprties
     var weatherManager = WeatherManager()
     var locationManager = CLLocationManager()
     
@@ -36,10 +36,18 @@ class WeatherViewController: UIViewController {
     
     }
     
+    // MARK: - IBAction Section
+    
     @IBAction func locationPressed(_ sender: UIButton) {
         
         // Fetch GPS location
         locationManager.requestLocation()
+        
+    }
+    
+    @IBAction func searchPressed(_ sender: UIButton) {
+        
+        searchTextField.endEditing(true)
         
     }
     
@@ -48,12 +56,6 @@ class WeatherViewController: UIViewController {
 // MARK: - UITextFieldDelegate Section
 
 extension WeatherViewController: UITextFieldDelegate {
-    
-    @IBAction func searchPressed(_ sender: UIButton) {
-        
-        searchTextField.endEditing(true)
-        
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         

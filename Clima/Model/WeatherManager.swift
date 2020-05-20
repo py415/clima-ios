@@ -9,6 +9,8 @@
 import Foundation
 import CoreLocation
 
+// MARK: - Protocol Section
+
 protocol WeatherManagerDelegate: class {
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel)
@@ -19,22 +21,23 @@ protocol WeatherManagerDelegate: class {
 
 struct WeatherManager {
     
-    // TODO: Remove API Key (appID) before commiting to Git
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?"
-    var appID: String = "***REMOVED***"
-    var units: String = "imperial" // USA customary units
+    // MARK: - Properties
+    private var appId: String = Constant.appId!
+    private var units: String = "imperial"
     weak var delegate: WeatherManagerDelegate?
+    
+    private let weatherURL = "https://api.openweathermap.org/data/2.5/weather?"
     
     func fetchWeather(city: String) {
         
         var newCity: String?
         
-        if (city.rangeOfCharacter(from: .whitespaces) != nil) {
+        if city.rangeOfCharacter(from: .whitespaces) != nil {
             newCity = city.replacingOccurrences(of: " ", with: "%20")
         }
         
         let urlString = "\(weatherURL)"
-            + "appid=\(appID)"
+            + "appid=\(appId)"
             + "&units=\(units)"
             + "&q=\(newCity ?? city)"
         performRequest(with: urlString)
@@ -44,7 +47,7 @@ struct WeatherManager {
     func fetchWeather(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
         
         let urlString = "\(weatherURL)"
-            + "appid=\(appID)"
+            + "appid=\(appId)"
             + "&units=\(units)"
             + "&lat=\(latitude)"
             + "&lon=\(longitude)"
@@ -56,7 +59,7 @@ struct WeatherManager {
         
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
-            let task = session.dataTask(with: url, completionHandler: { (data, response, error) in
+            let task = session.dataTask(with: url, completionHandler: { (data, _, error) in
                 if error != nil {
                     self.delegate?.didFailWithError(error!)
                     return
