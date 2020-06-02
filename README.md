@@ -4,7 +4,7 @@
 1. [Overview](#Overview)
 2. [Product Specs](#Product-Specs)
 3. [App Walkthrough](#App-Walkthrough)
-4. [APIs Used](#APIs-Used)
+4. [APIs](#APIs)
 5. [Credits](#Credits)
 
 ## Overview
@@ -24,10 +24,10 @@ Here's a GIF of how the app works:
 
 <img src="https://user-images.githubusercontent.com/35745973/81490573-dd7cf800-9238-11ea-8aa2-87d6f1d1c120.gif" width=250><br>
 
-## APIs Used
+## APIs
 
 - [OpenWeatherMap](https://openweathermap.org/api) - A website that provides Current & Forecast weather data collection.
 
 ## Credits
 
->This is a companion project to The App Brewery's Complete App Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
+>This is a companion project to The App Brewery's Complete App Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/).
