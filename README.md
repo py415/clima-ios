@@ -22,7 +22,7 @@ Clima is a location-aware weather app. It will find out where you are in the wor
 
 Here's a GIF of how the app works:
 
-<img src="https://user-images.githubusercontent.com/35745973/81490573-dd7cf800-9238-11ea-8aa2-87d6f1d1c120.gif" width=250>
+<img src="https://github.com/py415/app-resources/blob/master/ios/ios-clima.gif" width=250>
 
 ## APIs
 
